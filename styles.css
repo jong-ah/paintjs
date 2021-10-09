@@ -68,6 +68,14 @@ body {
   margin-bottom: 30px;
 }
 
+.stopdragging {
+  -ms-user-select: none;
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
 /* flaxbox 개념 및 속성 
 :: 인터페이스 내의 아이템 간 공간 배분
 :: 강력한 정렬 기능

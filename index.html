@@ -12,7 +12,7 @@
     <!--여기에선 id는 javascript, class는 css에서 활용된다 (이럴 필요는 없고 학습용)-->
     <canvas id="jsCanvas" class="canvas"></canvas>
     <div class="controls">
-      <div class="controls__range">
+      <div class="controls__range stopdragging">
         <!-- input: 을 입력하면 자동으로 나온다.-->
         <input
           type="range"
@@ -28,7 +28,7 @@
         <button id="jsMode">Fill</button>
         <button id="jsSave">Save</button>
       </div>
-      <div class="controls__colors" id="jsColors">
+      <div class="controls__colors stopdragging" id="jsColors">
         <div
           class="controls__color jsColor"
           style="background-color: #2c2c2c"
