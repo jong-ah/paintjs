@@ -1,3 +1,4 @@
+<!-- html만 넣어도 템플릿 만들어짐-->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,6 +8,119 @@
     <link rel="stylesheet" href="styles.css" />
     <title>PaintJS</title>
   </head>
-  <body></body>
-  <script src="app.js"></script>
+  <body>
+    <!--여기에선 id는 javascript, class는 css에서 활용된다 (이럴 필요는 없고 학습용)-->
+    <canvas id="jsCanvas" class="canvas"></canvas>
+    <div class="controls">
+      <div class="controls__range">
+        <!-- input: 을 입력하면 자동으로 나온다.-->
+        <input
+          type="range"
+          id="jsRange"
+          min="0.1"
+          max="5"
+          value="2.5"
+          step="0.1"
+        />
+      </div>
+      <!--div.controls__btns>button#jsMode+button#jsSave tab 누르면 생김-->
+      <div class="controls__btns">
+        <button id="jsMode">Fill</button>
+        <button id="jsSave">Save</button>
+      </div>
+      <div class="controls__colors" id="jsColors">
+        <div
+          class="controls__color jsColor"
+          style="background-color: #2c2c2c"
+        ></div>
+        <div
+          class="controls__color jsColor"
+          style="background-color: white"
+        ></div>
+        <div
+          class="controls__color jsColor"
+          style="background-color: #ff3b30"
+        ></div>
+        <div
+          class="controls__color jsColor"
+          style="background-color: #ff9500"
+        ></div>
+        <div
+          class="controls__color jsColor"
+          style="background-color: #ffcc00"
+        ></div>
+        <div
+          class="controls__color jsColor"
+          style="background-color: #4cd963"
+        ></div>
+        <div
+          class="controls__color jsColor"
+          style="background-color: #5ac8fa"
+        ></div>
+        <div
+          class="controls__color jsColor"
+          style="background-color: #0579ff"
+        ></div>
+        <div
+          class="controls__color jsColor"
+          style="background-color: #5856d6"
+        ></div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
 </html>
+
+<!-- 자바스크립트 삽입방식 
+브라우저는 HTML의 구조와 CSS 스타일을 렌더링하는 도중 자바스크립트를 만나게 되면 
+이에 대한 해석과 구현이 완료이 완료될때까지 브라우저 렌더링을 멈추게 된다.
+
+1. head에 삽입
+:: 문서를 초기화하거나 설정하는 가벼운 스크립트들이 자주 사용된다.
+:: 무거운 스크립트의 경우, 오랫동안 완성되지 못한 화면이 노출된다.
+:: 위의 해결방법으로 document.onload(window onload)와 같이 로드 이벤트가 추가되어야 에러없이 작동된다.
+
+2. /body 앞에 상입
+:: 대부분의 스크립트의 위치로 추천된다.
+:: 문서의 DOM(Document Object Model) 구조가 완료된 시점에서 실행되기에 별다른 추가설정이 필요없다.
+ 
+* 참고자료
+* [자바스크립트 삽입방식과 위치] (https://webdir.tistory.com/514)
+-->
+
+<!-- css는 왜 head에 넣어? 
+HTML이 파싱되면 DOM이 렌더링됩니다. CSS는 거의 모든 사용자 에이전트에서 DOM 렌더링과 병렬로 렌더링됩니다. 
+결과적으로 모든 CSS 코드를 문서의 <head> </ head> 섹션에서 가능한 많이 요청 된 외부 CSS 파일에 넣는 것이 좋습니다. 
+그렇지 않으면 페이지가 DOM에서 CSS 요청 위치의 발생까지 렌더링 된 다음 렌더링이 맨 위에서 시작됩니다.
+ 
+! 실행은 하향식이며 단일 스레드입니다. 자바 스크립트는 멀티 스레드로 보일 수 있지만 실제로는 자바 스크립트는 단일 스레드입니다. 
+! 외부 자바 스크립트 파일을 로드 할 때 기본 HTML 페이지의 구문 분석이 일시 중단 된 이유입니다.
+
+그러나 CSS 규칙은 항상 적용되므로 CSS 파일을 동시에 다운로드 할 수 있습니다.
+즉, 요소는 항상 최신 CSS 규칙이 정의되어 다시 그려 져서 차단을 해제합니다.
+
+* 참고자료
+* [[javascript] 웹 페이지의로드 및 실행 순서] (http://daplus.net/javascript-%EC%9B%B9-%ED%8E%98%EC%9D%B4%EC%A7%80%EC%9D%98%EB%A1%9C%EB%93%9C-%EB%B0%8F-%EC%8B%A4%ED%96%89-%EC%88%9C%EC%84%9C/)
+-->
+
+<!-- 지금 html 웹 페이지의 로드 및 실행 순서
+1. html 문서 다운로드/파싱
+2. html 파싱 도달 styles.css
+3. styles.css 다운로드/파싱
+4. html 파싱 도달 app.js
+5. app.js 다운로드/파싱 및 실행 (js는 실행이 바로 되기 때문에 body안에 있는 것이 좋다.)
+6. html 문서 파싱 끝
+
+* 파싱(Parsing) : 데이터를 조립해 원하는 데이터를 빼내는 프로그램을 하는것
+
+* 참고자료
+* [Parsing (파싱) 이란?] (https://na27.tistory.com/230 [na27])
+-->
+
+<!--html canvas tag
+Canvas API는 JavaScript와 HTML <canvas> 엘리먼트를 통해 그래픽을 그리기위한 수단을 제공합니다. 
+무엇보다도 애니메이션, 게임 그래픽, 데이터 시각화, 사진 조작 및 실시간 비디오 처리를 위해 사용됩니다.
+
+* 참고자료
+* [Canvas API MDN] (https://developer.mozilla.org/ko/docs/Web/API/Canvas_API)
+-->
