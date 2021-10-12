@@ -9,4 +9,4 @@ Painting Board made with VanillaJS
 
 ### 참고자료
 
-- [노마드 코더 - 바닐라 JS로 그림판 만들기](https://nomadcoders.co/javascript-for-beginners-2/lobby)
+- [노마드 코더 - 바닐라 JS로 그림판 만들기](https://nomadcoders.co/javascript-for-beginners-2)
