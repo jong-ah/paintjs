@@ -1,5 +1,5 @@
 # paintjs
-Painting Board made with VanillaJS
+Painting Board made with VanillaJS [→ paintjs github-pages](https://jong-ah.github.io/paintjs/)
 
 <br>
 
